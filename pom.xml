@@ -48,6 +48,10 @@
 		</dependency>
 		
 		<dependency>
+		
+		</dependency>
+		
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>1.6.4</version>
