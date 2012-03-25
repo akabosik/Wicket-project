@@ -16,26 +16,21 @@ import org.apache.wicket.markup.html.list.PropertyListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.value.ValueMap;
 
-
-
-
-public final class GuestBook extends WebPage{
+public final class GuestBook extends WebPage {
 	private static final List<Comment> commentList = Collections.synchronizedList(new ArrayList<Comment>());
-	
-			public GuestBook(){
+	public GuestBook(){
 		add(new CommentForm("commentForm"));
 		add(new PropertyListView<Comment>("comments", commentList) {
-		
-		public void populateItem(final ListItem<Comment> listItem){
-			listItem.add(new Label("date"));
-			listItem.add(new MultiLineLabel("text"));
-		}
+			public void populateItem(final ListItem<Comment> listItem){
+				listItem.add(new Label("date"));
+				listItem.add(new MultiLineLabel("text"));
+			}
 		}).setVersioned(false);
 	}
 	public final class CommentForm extends Form<ValueMap>{
-		public CommentForm(final String id){
+		public CommentForm (final String id){
 			super(id,new CompoundPropertyModel<ValueMap>(new ValueMap()));
-	//		setMarkupId("commentForm");
+//			setMarkupId("commentForm");
 			add(new TextArea<String>("text").setType(String.class));
 			add(new TextField<String>("comment").setType(String.class));
 		}
@@ -52,9 +47,12 @@ public final class GuestBook extends WebPage{
 			comment.setText((String)values.get("text"));
 			commentList.add(0, comment);
 			values.put("text", "");
-		}
+		}	
 	}
+	
 	public static void clear(){
 		commentList.clear();
+	
 	}
-}
+	}
+	
